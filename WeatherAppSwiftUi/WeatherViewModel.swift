@@ -8,17 +8,35 @@
 import Foundation
 
 class WeatherViewModel: ObservableObject {
-    let network = Network()
+//    let network = Network()
     
+    @Published var weatherModel: WeatherModel?
     
-    func get() {
-        network.getTodayWeather(city: "") { res in
+    func getWeather() {
+        Network.shared.getTodayWeather(city: "") { res in
             switch res {
             case .success(let success):
                 print(success)
+                print(success.hourly.count)
+                self.weatherModel = success
             case .failure(let failure):
                 print(failure)
             }
         }
     }
+    
+    func setHourly() -> [Hourly] {
+        if let weatherModel = self.weatherModel {
+            return weatherModel.hourly
+        }
+        return []
+    }
+    
+    func setDaily() -> [Daily] {
+        if let weatherModel = self.weatherModel {
+            return weatherModel.daily
+        }
+        return []
+    }
+ 
 }

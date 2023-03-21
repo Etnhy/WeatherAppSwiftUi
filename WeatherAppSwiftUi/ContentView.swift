@@ -15,8 +15,9 @@ struct ContentView: View {
             HoursTodayeWeather()
             DaysWeatherView()
         }
+        .environmentObject(viewModel)
         .onAppear(perform: {
-            viewModel.get()
+            viewModel.getWeather()
         })
         .background(
             Color(red: 0.29, green: 0.56, blue: 0.89)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TodayWeatherView: View {
+    @EnvironmentObject var viewModel: WeatherViewModel
     var body: some View {
         VStack {
             HStack(alignment: .firstTextBaseline) {
@@ -15,10 +16,11 @@ struct TodayWeatherView: View {
                     Text("Название города")
                         .font(.custom(AvenirFont.avenirHeavy, size: 22))
                     HStack {
-                        Text("дата")
+                        Text(.now, style: .date)
                             .font(.custom(AvenirFont.avenirMedium, size: 19))
                     }
                 }
+                .padding(.horizontal, 16)
                 Spacer()
                 Button {
                     
@@ -30,6 +32,19 @@ struct TodayWeatherView: View {
                 Image(systemName: "cloud.rain.fill")
                     .resizable()
                     .frame(width: 140,height: 140)
+                /*
+                 let url = viewModel.weatherModel?.weather.first?.icon ?? "error"
+                AsyncImage(url:URL(string: "https://openweathermap.org/img/wn/\(url)@2x.png")) { img in
+                    img.frame(width: 160,height: 160)
+                } placeholder: {
+                    ProgressView {
+                        Text("Loading")
+                    }
+                    .padding(.horizontal,16)
+                }
+                .frame(width: 160,height: 160)
+
+                 */
                 Spacer()
                 VStack(alignment: .leading) {
                     HStack {
@@ -61,8 +76,11 @@ struct TodayWeatherView: View {
 }
 
 struct TodayWeatherView_Previews: PreviewProvider {
+//    @State static var weatherPreviewsModel:WeatherModel?
+    
     static var previews: some View {
         TodayWeatherView()
+            .environmentObject(WeatherViewModel())
     }
 }
 

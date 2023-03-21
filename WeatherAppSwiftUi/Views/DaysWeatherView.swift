@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct DaysWeatherView: View {
+    @EnvironmentObject var viewModel: WeatherViewModel
     var body: some View {
         ScrollView {
-            VStack {
-                ForEach(1..<8) { content in
+            LazyVStack {
+                ForEach(viewModel.setDaily(),id: \.id) { content in
                     DaysCell(content: content)
                 }
             }
@@ -25,15 +26,17 @@ struct DaysWeatherView: View {
 struct DaysWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         DaysWeatherView()
+            .environmentObject(WeatherViewModel())
     }
 }
 
 
 struct DaysCell: View {
-    var content: Int
+    var content: Daily
     var body: some View {
         HStack {
-            Text("\(content)")
+//            Text(Date(timeIntervalSince1970: TimeInterval(content.dt)), format: .dateTime)
+            Text("\(Double(content.dt).getDateStringFromUnixTime(dateStyle: .full, timeStyle: .none, format: "E"))")
             Spacer()
             Text("27 / 19")
             Spacer()
