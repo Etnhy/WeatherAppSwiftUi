@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: WeatherViewModel
     var body: some View {
         VStack {
-           TodayWeatherView()
+            TodayWeatherView()
             HoursTodayeWeather()
             DaysWeatherView()
-//            Spacer()
         }
+        .onAppear(perform: {
+            viewModel.get()
+        })
         .background(
             Color(red: 0.29, green: 0.56, blue: 0.89)
         )
@@ -24,5 +27,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(WeatherViewModel())
     }
 }

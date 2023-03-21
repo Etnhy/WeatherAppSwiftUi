@@ -16,6 +16,9 @@ struct DaysWeatherView: View {
                 }
             }
         }
+        .background(
+            Color.white
+        )
     }
 }
 
