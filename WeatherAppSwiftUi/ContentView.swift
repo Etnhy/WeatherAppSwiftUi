@@ -18,7 +18,7 @@ struct ContentView: View {
             }
             .environmentObject(viewModel)
             .onAppear(perform: {
-                viewModel.getWeatherData(lat: "33.44", lon: "-94.04")
+                viewModel.getWeatherData(lat: "47.54", lon: "33.22")
             })
             .background(
                 Color(red: 0.29, green: 0.56, blue: 0.89)
