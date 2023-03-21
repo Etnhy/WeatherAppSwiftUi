@@ -34,18 +34,23 @@ struct DaysWeatherView_Previews: PreviewProvider {
 struct DaysCell: View {
     var content: Daily
     var body: some View {
-        HStack {
-//            Text(Date(timeIntervalSince1970: TimeInterval(content.dt)), format: .dateTime)
+        HStack(alignment: .center) {
+            Spacer()
             Text("\(Double(content.dt).getDateStringFromUnixTime(dateStyle: .full, timeStyle: .none, format: "E"))")
             Spacer()
-            Text("27 / 19")
+            Text("\(Int(content.temp.max))°C / \(Int(content.temp.min))°C")
             Spacer()
-            Image(systemName: "cloud")
-                .resizable()
-                .frame(width: 50,height: 40)
+            AsyncImage(url: URL(string: "https://openweathermap.org/img/wn/\(content.weather[0].icon)@2x.png")) { image in
+                image.frame(width: 70,height: 70)
+                    .frame(alignment: .leading)
+            } placeholder: {
+                ProgressView()
+                    .frame(width: 70,height: 70)
+            }
+            Spacer()
         }
+
         .font(.custom(AvenirFont.avenirMedium, size: 20))
         .frame(height: 100)
-        .padding(.horizontal,16)
     }
 }

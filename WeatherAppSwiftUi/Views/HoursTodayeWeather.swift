@@ -38,6 +38,9 @@ struct HourCell: View {
     @State var time: Int
     @State var image: String
     @State var temp: Double
+    
+//    var hourly: Hourly
+    
     var body: some View {
         VStack(alignment: .center) {
             Text("\(Date(timeIntervalSince1970: TimeInterval(time)).formatted(date: .omitted, time: .shortened))")
