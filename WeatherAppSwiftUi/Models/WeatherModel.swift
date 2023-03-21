@@ -56,3 +56,27 @@ struct Temp: Codable {
     let max: Double
 }
 
+ //MARK: - CurrentWeather
+struct CurrentWeather: Codable {
+    let coord: Coord
+    let weather:[Weather]
+    let main: Main
+    let wind: Wind
+    let dt: Int
+    let name: String
+    
+}
+struct Coord: Codable {
+    let lat: Double
+    let lon: Double
+    
+}
+struct Main: Codable {
+    let temp_min: Double
+    let temp_max: Double
+    let humidity: Int
+
+}
+struct Wind: Codable {
+    let speed: Double
+}

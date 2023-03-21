@@ -8,12 +8,18 @@
 import Foundation
 
 class WeatherViewModel: ObservableObject {
-//    let network = Network()
-    
     @Published var weatherModel: WeatherModel?
+    @Published var currentWeather: CurrentWeather?
     
-    func getWeather() {
-        Network.shared.getTodayWeather(city: "") { res in
+    // °C
+    
+    public func getWeatherData(lat: String, lon: String) {
+        getCurrentWeather(lat: lat, lon: lon)
+        getWeather(lat: lat, lon: lon)
+    }
+    
+   private func getWeather(lat: String, lon: String) {
+        Network.shared.getTodayWeather(lat: lat, lon: lon) { res in
             switch res {
             case .success(let success):
                 print(success)
@@ -23,6 +29,38 @@ class WeatherViewModel: ObservableObject {
                 print(failure)
             }
         }
+    }
+   private func getCurrentWeather(lat: String, lon: String) {
+        Network.shared.getCurrentWeather(lat: lat, lon: lon) { result in
+            switch result {
+            case .success(let success):
+                print(success)
+                self.currentWeather = success
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        
+    }
+    
+    func returnWindSpeedCurrent()-> String {
+        guard let currentWeather = self.currentWeather else { return "" }
+        return "\(Int(currentWeather.wind.speed))/сек"
+    }
+    
+    func returnHumidityCurrent() -> String {
+        guard let currentWeather = self.currentWeather else { return "" }
+        return "\(currentWeather.main.humidity.formatted(.percent))"
+    }
+    func returnMinMaxCurrentTemp() -> String {
+        guard let currentWeather = self.currentWeather else { return "" }
+        return "\(Int(currentWeather.main.temp_min))°C / \(Int(currentWeather.main.temp_max))°C"
+    }
+    
+    
+    func returnCurrentIcon()-> String {
+        guard let currentWeather = self.currentWeather else { return "" }
+        return  "https://openweathermap.org/img/wn/\(currentWeather.weather[0].icon)@2x.png"
     }
     
     func setHourly() -> [Hourly] {
