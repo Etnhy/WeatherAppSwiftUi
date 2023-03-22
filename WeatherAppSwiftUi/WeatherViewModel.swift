@@ -6,42 +6,21 @@
 //
 
 import Foundation
+import MapKit
 
 class WeatherViewModel: ObservableObject {
     @Published var weatherModel: WeatherModel?
     @Published var currentWeather: CurrentWeather?
+    //                viewModel.getWeatherData(lat: "47.54", lon: "33.22")
+
+    @Published var location = CLLocationCoordinate2D(latitude: 50.450001, longitude: 30.523333)
     
-    // °C
-    
-    public func getWeatherData(lat: String, lon: String) {
+    public func getWeatherData(lat: Double, lon: Double) {
         getCurrentWeather(lat: lat, lon: lon)
         getWeather(lat: lat, lon: lon)
     }
     
-   private func getWeather(lat: String, lon: String) {
-        Network.shared.getTodayWeather(lat: lat, lon: lon) { res in
-            switch res {
-            case .success(let success):
-                print(success)
-                print(success.hourly.count)
-                self.weatherModel = success
-            case .failure(let failure):
-                print(failure)
-            }
-        }
-    }
-   private func getCurrentWeather(lat: String, lon: String) {
-        Network.shared.getCurrentWeather(lat: lat, lon: lon) { result in
-            switch result {
-            case .success(let success):
-                print(success)
-                self.currentWeather = success
-            case .failure(let failure):
-                print(failure)
-            }
-        }
-        
-    }
+
     
     func returnWindSpeedCurrent()-> String {
         guard let currentWeather = self.currentWeather else { return "" }
@@ -76,5 +55,35 @@ class WeatherViewModel: ObservableObject {
         }
         return []
     }
+     //MARK: -  get weather
+    private func getWeather(lat: Double, lon: Double) {
+         Network.shared.getTodayWeather(lat: lat, lon: lon) { res in
+             switch res {
+             case .success(let success):
+                 self.weatherModel = success
+             case .failure(let failure):
+                 print(failure)
+             }
+         }
+     }
+    
+    func setCurrentWeahter() -> CurrentWeather {
+        if let currentWeather = self.currentWeather {
+            return currentWeather
+        }
+        fatalError()
+    }
+    
+    private func getCurrentWeather(lat: Double, lon: Double) {
+         Network.shared.getCurrentWeather(lat: lat, lon: lon) { result in
+             switch result {
+             case .success(let success):
+                 self.currentWeather = success
+             case .failure(let failure):
+                 print(failure)
+             }
+         }
+         
+     }
  
 }

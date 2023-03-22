@@ -1,14 +1,15 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  WeatherAppSwiftUi
 //
-//  Created by Евгений Маглена on 21.03.2023.
+//  Created by Евгений Маглена on 22.03.2023.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     @EnvironmentObject var viewModel: WeatherViewModel
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -18,18 +19,18 @@ struct ContentView: View {
             }
             .environmentObject(viewModel)
             .onAppear(perform: {
-                viewModel.getWeatherData(lat: "47.54", lon: "33.22")
+                viewModel.getWeatherData(lat: viewModel.location.latitude, lon: viewModel.location.longitude)
             })
             .background(
                 Color(red: 0.29, green: 0.56, blue: 0.89)
-        )
+            )
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
             .environmentObject(WeatherViewModel())
     }
 }

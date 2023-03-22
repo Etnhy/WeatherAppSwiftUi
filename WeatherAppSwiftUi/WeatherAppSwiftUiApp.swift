@@ -9,11 +9,22 @@ import SwiftUI
 
 @main
 struct WeatherAppSwiftUiApp: App {
+    @State private var isLoading = false
     
+    @ViewBuilder
     var body: some Scene {
+        
         WindowGroup {
-            ContentView()
-                .environmentObject(WeatherViewModel())
+            if isLoading {
+                MainView()
+                    .environmentObject(WeatherViewModel())
+            } else {
+                LoadingView(isLoading: $isLoading)
+                    .environmentObject(WeatherViewModel())
+
+            }
         }
+
+        
     }
 }
