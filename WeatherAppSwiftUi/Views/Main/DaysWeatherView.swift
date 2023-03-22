@@ -36,7 +36,7 @@ struct DaysCell: View {
     var body: some View {
         HStack(alignment: .center) {
             Spacer()
-            Text("\(Double(content.dt).getDateStringFromUnixTime(dateStyle: .full, timeStyle: .none, format: "E"))")
+            Text("\(Double(content.dt).getDateStringFromUnixTime(dateStyle: .full, timeStyle: .none, format: "dd E"))")
             Spacer()
             Text("\(Int(content.temp.max))°C / \(Int(content.temp.min))°C")
             Spacer()

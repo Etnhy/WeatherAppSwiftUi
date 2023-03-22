@@ -11,7 +11,19 @@ import MapKit
 struct SelectLocationView: View {
     @EnvironmentObject var viewModel: WeatherViewModel
     var body: some View {
-        MapView(centerCoordinate: $viewModel.location)
+            VStack {
+                MapView(centerCoordinate: $viewModel.location)
+                    .ignoresSafeArea(.all)
+                HStack {
+                    Text("lat:\(viewModel.location.latitude)")
+                    Text("lon\(viewModel.location.longitude)")
+
+                }
+
+            }
+        
+
+        
     }
 }
 
