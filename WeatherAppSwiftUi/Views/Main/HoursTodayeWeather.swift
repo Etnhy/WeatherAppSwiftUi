@@ -18,6 +18,7 @@ struct HoursTodayeWeather: View {
                     HourCell(time: content.dt, image: content.weather[0].icon, temp: content.temp)
                 }
             }
+            .padding(.horizontal,16)
         }
         .background(
             Color(red: 0.36, green: 0.62, blue: 0.94)
@@ -56,5 +57,6 @@ struct HourCell: View {
             Text("\(Int(temp))°C")
         }
         .frame(width: 60,height: 170)
+        
     }
 }
