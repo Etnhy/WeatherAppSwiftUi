@@ -14,7 +14,7 @@ struct MainView: View {
     @ViewBuilder
     var body: some View {
         NavigationStack {
-            if isLoaded {
+//            if isLoaded {
                 VStack {
                     TodayWeatherView()
                     HoursTodayeWeather()
@@ -24,14 +24,14 @@ struct MainView: View {
                 .background(
                     Color(red: 0.29, green: 0.56, blue: 0.89)
             )
-            } else {
-                ProgressView()
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                            self.isLoaded = true
-                        }
-                    }
-            }
+//            } else {
+//                ProgressView()
+//                    .onAppear {
+//                        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+//                            self.isLoaded = true
+//                        }
+//                    }
+//            }
         }
     }
 }

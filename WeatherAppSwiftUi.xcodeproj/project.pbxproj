@@ -17,6 +17,7 @@
 		7A79B39D29C9CBB0004D24A6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79B39C29C9CBB0004D24A6 /* Network.swift */; };
 		7A79B3A029C9CE9F004D24A6 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79B39F29C9CE9F004D24A6 /* WeatherModel.swift */; };
 		7A79B3A229C9D076004D24A6 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79B3A129C9D076004D24A6 /* WeatherViewModel.swift */; };
+		7A79B57B29CCDB1700BB25B0 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7A79B57A29CCDB1700BB25B0 /* NukeUI */; };
 		7A8A9DEA29C9C15500AC7982 /* WeatherAppSwiftUiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A9DE929C9C15500AC7982 /* WeatherAppSwiftUiApp.swift */; };
 		7A8A9DEE29C9C15500AC7982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A9DED29C9C15500AC7982 /* Assets.xcassets */; };
 		7A8A9DF129C9C15500AC7982 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A9DF029C9C15500AC7982 /* Preview Assets.xcassets */; };
@@ -84,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CA9ED8366583F099569815F /* Pods_WeatherAppSwiftUi.framework in Frameworks */,
+				7A79B57B29CCDB1700BB25B0 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +265,9 @@
 			dependencies = (
 			);
 			name = WeatherAppSwiftUi;
+			packageProductDependencies = (
+				7A79B57A29CCDB1700BB25B0 /* NukeUI */,
+			);
 			productName = WeatherAppSwiftUi;
 			productReference = 7A8A9DE629C9C15500AC7982 /* WeatherAppSwiftUi.app */;
 			productType = "com.apple.product-type.application";
@@ -338,6 +343,9 @@
 				Base,
 			);
 			mainGroup = 7A8A9DDD29C9C15500AC7982;
+			packageReferences = (
+				7A79B57929CCDB1700BB25B0 /* XCRemoteSwiftPackageReference "NukeUI" */,
+			);
 			productRefGroup = 7A8A9DE729C9C15500AC7982 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -825,6 +833,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7A79B57929CCDB1700BB25B0 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/NukeUI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7A79B57A29CCDB1700BB25B0 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A79B57929CCDB1700BB25B0 /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7A8A9DDE29C9C15500AC7982 /* Project object */;
 }

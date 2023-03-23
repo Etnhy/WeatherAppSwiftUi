@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct DaysWeatherView: View {
     @EnvironmentObject var viewModel: WeatherViewModel
@@ -40,12 +41,9 @@ struct DaysCell: View {
             Spacer()
             Text("\(Int(content.temp.max))°C / \(Int(content.temp.min))°C")
             Spacer()
-            AsyncImage(url: URL(string: "https://openweathermap.org/img/wn/\(content.weather[0].icon)@2x.png")) { image in
-                image.frame(width: 70,height: 70)
+            LazyImage(source: "https://openweathermap.org/img/wn/\(content.weather[0].icon)@2x.png") { image in
+                image.image?.frame(width:70,height: 70)
                     .frame(alignment: .leading)
-            } placeholder: {
-                ProgressView()
-                    .frame(width: 70,height: 70)
             }
             Spacer()
         }

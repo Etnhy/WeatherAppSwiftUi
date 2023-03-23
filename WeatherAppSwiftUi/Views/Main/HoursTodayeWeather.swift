@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct HoursTodayeWeather: View {
     @EnvironmentObject var viewModel: WeatherViewModel
@@ -46,13 +47,8 @@ struct HourCell: View {
         VStack(alignment: .center) {
             Text("\(Date(timeIntervalSince1970: TimeInterval(time)).formatted(date: .omitted, time: .shortened))")
                 .font(.custom(AvenirFont.avenirMedium, size: 13))
-            AsyncImage(url: URL(string: "https://openweathermap.org/img/wn/\(image)@2x.png")) { image in
-                image.frame(width:50, height: 50)
-            } placeholder: {
-                ProgressView {
-                    Text("Loading")
-                }
-                .frame(width: 50,height: 50)
+            LazyImage(source: "https://openweathermap.org/img/wn/\(image)@2x.png") { image in
+                image.image?.frame(width: 60,height: 60)
             }
             Text("\(Int(temp))°C")
         }
