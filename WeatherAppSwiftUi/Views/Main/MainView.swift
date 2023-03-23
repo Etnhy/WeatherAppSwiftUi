@@ -20,6 +20,9 @@ struct MainView: View {
                     HoursTodayeWeather()
                     DaysWeatherView()
                 }
+                .onAppear(perform: {
+                    viewModel.getWeatherData()
+                })
                 .environmentObject(viewModel)
                 .background(
                     Color(red: 0.29, green: 0.56, blue: 0.89)
