@@ -15,16 +15,21 @@ class WeatherViewModel: ObservableObject {
 
     @Published var location = CLLocationCoordinate2D(latitude: 50.450001, longitude: 30.523333)
     
-    public func getWeatherData(lat: Double, lon: Double) {
-        getCurrentWeather(lat: lat, lon: lon)
-        getWeather(lat: lat, lon: lon)
+//    public func getWeatherData(lat: Double, lon: Double) {
+//        getCurrentWeather(lat: lat, lon: lon)
+//        getWeather(lat: lat, lon: lon)
+//    }
+    
+    public func getWeatherData() {
+        getCurrentWeather(lat: location.latitude, lon: location.longitude)
+        getWeather(lat: location.latitude, lon: location.longitude)
     }
     
 
     
     func returnWindSpeedCurrent()-> String {
         guard let currentWeather = self.currentWeather else { return "" }
-        return "\(Int(currentWeather.wind.speed))/сек"
+        return "\(Int(currentWeather.wind.speed))/sec"
     }
     
     func returnHumidityCurrent() -> String {
