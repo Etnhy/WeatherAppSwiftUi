@@ -9,32 +9,31 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var viewModel: WeatherViewModel
+    @EnvironmentObject var location: LocationManager
     @State var isLoaded = false
     
     @ViewBuilder
     var body: some View {
         NavigationStack {
-//            if isLoaded {
                 VStack {
                     TodayWeatherView()
                     HoursTodayeWeather()
                     DaysWeatherView()
                 }
                 .onAppear(perform: {
-                    viewModel.getWeatherData()
+                    location.startUpdatingLocation()
+                    
+                   if viewModel.coordinateWeatherOrMapTappint {
+                        viewModel.getWeatherData(location:                      location.locationManager(location.locationManager, didUpdateLocations: [location.locationManager.location!]))
+                    } else {
+                        viewModel.getWeatherData(location: viewModel.mapDefaultCoordinate)
+                    }
                 })
                 .environmentObject(viewModel)
+                .environmentObject(location)
                 .background(
                     Color(red: 0.29, green: 0.56, blue: 0.89)
             )
-//            } else {
-//                ProgressView()
-//                    .onAppear {
-//                        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-//                            self.isLoaded = true
-//                        }
-//                    }
-//            }
         }
     }
 }

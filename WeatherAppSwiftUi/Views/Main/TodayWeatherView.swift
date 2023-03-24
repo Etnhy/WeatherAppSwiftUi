@@ -11,8 +11,36 @@ import NukeUI
 
 struct TodayWeatherView: View {
     @EnvironmentObject var viewModel: WeatherViewModel
+    @EnvironmentObject var location: LocationManager
+
     var body: some View {
         VStack {
+            HStack {
+                Toggle("", isOn: $viewModel.coordinateWeatherOrMapTappint)
+                if !viewModel.coordinateWeatherOrMapTappint {
+                    Spacer()
+
+                    NavigationLink(destination: SelectLocationView()) {
+                        Image(systemName: "location.circle")
+                            .resizable()
+                            .foregroundColor(.white)
+                            .frame(width: 30,height: 30)
+                    }
+                    .environmentObject(WeatherViewModel())
+                } else {
+                    Spacer()
+
+                    Button {
+                        viewModel.getWeatherData(location:                      location.locationManager(location.locationManager, didUpdateLocations: [location.locationManager.location!]))
+                    } label: {
+                        Image(systemName: "gobackward")
+                            .resizable()
+                            .frame(width: 30,height: 30)
+                    }
+
+                }
+
+            }.padding(.horizontal,16)
             VStack {
                 VStack {
                     HStack(alignment: .firstTextBaseline) {
@@ -26,16 +54,9 @@ struct TodayWeatherView: View {
                         }
                         .padding(.horizontal, 16)
                         Spacer()
-                        NavigationLink(destination: SelectLocationView()) {
-                            Image(systemName: "location.circle")
-                                .resizable()
-                                .foregroundColor(.white)
-                                .frame(width: 30,height: 30)
-                        }
-                        .environmentObject(WeatherViewModel())
+                        
                     }
                     HStack {
-                        //                    LazyImage(source: viewModel.returnCurrentIcon())
                         LazyImage(source: viewModel.returnCurrentIcon()) { image in
                             image.image?
                                 .resizingMode(.aspectFit)
@@ -59,13 +80,10 @@ struct TodayWeatherView: View {
                         .font(.custom(AvenirFont.avenirMedium, size: 18))
                         Spacer()
                     }
-                    .onAppear {
-                        print(viewModel.location)
-                    }
                 }
                 .padding(.horizontal,16)
                 .frame(height: 300)
-                
+
             }
         }
     }

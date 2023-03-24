@@ -11,6 +11,7 @@ import SwiftUI
 struct WeatherAppSwiftUiApp: App {
     @State private var isLoading = false
     @StateObject var vm = WeatherViewModel()
+    @StateObject var loc = LocationManager()
     
     @ViewBuilder
     var body: some Scene {
@@ -18,8 +19,9 @@ struct WeatherAppSwiftUiApp: App {
         WindowGroup {
             MainView()
                 .environmentObject(vm)
+                .environmentObject(loc)
                 .onAppear {
-                    vm.getWeatherData()
+                    vm.getWeatherData(location: loc.coord)
                 }
         }
         

@@ -20,11 +20,12 @@ struct HoursTodayeWeather: View {
                 }
             }
             .padding(.horizontal,16)
+            .frame(height: 170)
+
         }
         .background(
             Color(red: 0.36, green: 0.62, blue: 0.94)
         )
-        .frame(height: 170)
     }
 }
 
@@ -45,13 +46,16 @@ struct HourCell: View {
     
     var body: some View {
         VStack(alignment: .center) {
+            
             Text("\(Date(timeIntervalSince1970: TimeInterval(time)).formatted(date: .omitted, time: .shortened))")
                 .font(.custom(AvenirFont.avenirMedium, size: 13))
             LazyImage(source: "https://openweathermap.org/img/wn/\(image)@2x.png") { image in
                 image.image?.frame(width: 60,height: 60)
             }
+
             Text("\(Int(temp))°C")
         }
+        .padding(.vertical,16)
         .frame(width: 60,height: 170)
         
     }

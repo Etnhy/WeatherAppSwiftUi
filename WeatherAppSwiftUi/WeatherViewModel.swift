@@ -11,21 +11,27 @@ import MapKit
 class WeatherViewModel: ObservableObject {
     @Published var weatherModel: WeatherModel?
     @Published var currentWeather: CurrentWeather?
-    //                viewModel.getWeatherData(lat: "47.54", lon: "33.22")
+    @Published var coordinateWeatherOrMapTappint: Bool = true
+    
+    @Published var mapDefaultCoordinate = CLLocationCoordinate2D(latitude: 50.450001, longitude: 30.523333)
 
-    @Published var location = CLLocationCoordinate2D(latitude: 50.450001, longitude: 30.523333)
     
-//    public func getWeatherData(lat: Double, lon: Double) {
-//        getCurrentWeather(lat: lat, lon: lon)
-//        getWeather(lat: lat, lon: lon)
-//    }
-    
-    public func getWeatherData() {
+    public func getWeatherData(location: CLLocationCoordinate2D?) {
+        guard let location = location else { return }
+        print(location, "VIEW MODEL")
         getCurrentWeather(lat: location.latitude, lon: location.longitude)
         getWeather(lat: location.latitude, lon: location.longitude)
     }
     
+    public func mapOrSelf(location: CLLocationCoordinate2D?) {
+        if coordinateWeatherOrMapTappint {
+            getWeatherData(location: location)
+        } else {
+            getWeatherData(location: location)
 
+        }
+//        print(coordinateWeatherOrMapTappint)
+    }
     
     func returnWindSpeedCurrent()-> String {
         guard let currentWeather = self.currentWeather else { return "" }
