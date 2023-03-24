@@ -55,6 +55,8 @@ struct HourCell: View {
 
             Text("\(Int(temp))°C")
         }
+        .foregroundColor(.black)
+
         .padding(.vertical,16)
         .frame(width: 60,height: 170)
         

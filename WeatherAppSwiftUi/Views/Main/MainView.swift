@@ -12,6 +12,7 @@ struct MainView: View {
     @EnvironmentObject var location: LocationManager
     @State var isLoaded = false
     
+
     @ViewBuilder
     var body: some View {
         NavigationStack {

@@ -52,10 +52,13 @@ struct TodayWeatherView: View {
                                     .font(.custom(AvenirFont.avenirMedium, size: 19))
                             }
                         }
+                        .foregroundColor(.black)
+
                         .padding(.horizontal, 16)
                         Spacer()
                         
                     }
+
                     HStack {
                         LazyImage(source: viewModel.returnCurrentIcon()) { image in
                             image.image?
@@ -78,6 +81,8 @@ struct TodayWeatherView: View {
                             }
                         }
                         .font(.custom(AvenirFont.avenirMedium, size: 18))
+                        .foregroundColor(.black)
+
                         Spacer()
                     }
                 }
