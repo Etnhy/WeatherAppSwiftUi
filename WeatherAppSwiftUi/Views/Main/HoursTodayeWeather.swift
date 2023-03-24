@@ -46,14 +46,19 @@ struct HourCell: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            
+            Spacer()
             Text("\(Date(timeIntervalSince1970: TimeInterval(time)).formatted(date: .omitted, time: .shortened))")
                 .font(.custom(AvenirFont.avenirMedium, size: 13))
+            Spacer()
+
             LazyImage(source: "https://openweathermap.org/img/wn/\(image)@2x.png") { image in
                 image.image?.frame(width: 60,height: 60)
             }
+            Spacer()
 
             Text("\(Int(temp))°C")
+            Spacer()
+
         }
         .foregroundColor(.black)
 
