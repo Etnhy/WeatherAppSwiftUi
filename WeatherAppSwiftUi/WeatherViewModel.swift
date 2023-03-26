@@ -18,9 +18,9 @@ class WeatherViewModel: ObservableObject {
     
     public func getWeatherData(location: CLLocationCoordinate2D?) {
         guard let location = location else { return }
-        print(location, "VIEW MODEL")
-        getCurrentWeather(lat: location.latitude, lon: location.longitude)
-        getWeather(lat: location.latitude, lon: location.longitude)
+            getCurrentWeather(lat: location.latitude, lon: location.longitude)
+            getWeather(lat: location.latitude, lon: location.longitude)
+
     }
     
     public func mapOrSelf(location: CLLocationCoordinate2D?) {

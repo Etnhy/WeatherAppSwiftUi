@@ -31,11 +31,17 @@ struct TodayWeatherView: View {
                     Spacer()
 
                     Button {
-                        viewModel.getWeatherData(location:                      location.locationManager(location.locationManager, didUpdateLocations: [location.locationManager.location!]))
+                        guard let loc = location.locationManager.location else { return }
+                        viewModel.getWeatherData(location: location.locationManager(location.locationManager, didUpdateLocations: [loc]))
                     } label: {
                         Image(systemName: "gobackward")
                             .resizable()
                             .frame(width: 30,height: 30)
+                    }
+                    .onAppear {
+                        guard let loc = location.locationManager.location else { return }
+                        viewModel.getWeatherData(location: location.locationManager(location.locationManager, didUpdateLocations: [loc]))
+
                     }
 
                 }
