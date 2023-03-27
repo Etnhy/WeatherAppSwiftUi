@@ -13,6 +13,7 @@
 		7A2032D629CB1FE400F9B995 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2032D529CB1FE400F9B995 /* MainView.swift */; };
 		7A2032DA29CB2E1900F9B995 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2032D929CB2E1900F9B995 /* MapCoordinator.swift */; };
 		7A2032DC29CB2E5000F9B995 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2032DB29CB2E5000F9B995 /* MapView.swift */; };
+		7A362C6629D1A0B300D20A75 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A362C6529D1A0B300D20A75 /* NetworkConfiguration.swift */; };
 		7A494E3429CA4C09005FDC14 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A494E3329CA4C09005FDC14 /* Double+Extension.swift */; };
 		7A79B39D29C9CBB0004D24A6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79B39C29C9CBB0004D24A6 /* Network.swift */; };
 		7A79B3A029C9CE9F004D24A6 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79B39F29C9CE9F004D24A6 /* WeatherModel.swift */; };
@@ -60,6 +61,8 @@
 		7A2032D529CB1FE400F9B995 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7A2032D929CB2E1900F9B995 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		7A2032DB29CB2E5000F9B995 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		7A362C6529D1A0B300D20A75 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
+		7A362C6729D1A0E200D20A75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A494E3329CA4C09005FDC14 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		7A79B39C29C9CBB0004D24A6 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7A79B39F29C9CE9F004D24A6 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				7A79B39C29C9CBB0004D24A6 /* Network.swift */,
+				7A362C6529D1A0B300D20A75 /* NetworkConfiguration.swift */,
 				7A94042B29CDBF4D0040BA0C /* Location.swift */,
 			);
 			path = Managers;
@@ -204,6 +208,7 @@
 		7A8A9DE829C9C15500AC7982 /* WeatherAppSwiftUi */ = {
 			isa = PBXGroup;
 			children = (
+				7A362C6729D1A0E200D20A75 /* Info.plist */,
 				7A494E3229CA4BFE005FDC14 /* Extensions */,
 				7A79B39E29C9CE97004D24A6 /* Models */,
 				7A79B39B29C9CBA8004D24A6 /* Managers */,
@@ -505,6 +510,7 @@
 				7A8A9E1729C9C5B900AC7982 /* HoursTodayeWeather.swift in Sources */,
 				7A79B3A229C9D076004D24A6 /* WeatherViewModel.swift in Sources */,
 				7A2032DA29CB2E1900F9B995 /* MapCoordinator.swift in Sources */,
+				7A362C6629D1A0B300D20A75 /* NetworkConfiguration.swift in Sources */,
 				7A8A9E1529C9C20400AC7982 /* TodayWeatherView.swift in Sources */,
 				7A8A9E1929C9C98D00AC7982 /* DaysWeatherView.swift in Sources */,
 			);
@@ -661,6 +667,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9404B9FA9075997DE27C79FF /* Pods-WeatherAppSwiftUi.debug.xcconfig */;
 			buildSettings = {
+				API_KEY = 9e64db94a738a9d0398f267a443b079c;
+				API_URL = "https://api.openweathermap.org/data/2.5/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -669,6 +677,7 @@
 				DEVELOPMENT_TEAM = 876GZYDWFS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherAppSwiftUi/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Acces;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -692,6 +701,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1F2154A9D228850C4C8B5820 /* Pods-WeatherAppSwiftUi.release.xcconfig */;
 			buildSettings = {
+				API_KEY = 9e64db94a738a9d0398f267a443b079c;
+				API_URL = "https://api.openweathermap.org/data/2.5/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -700,6 +711,7 @@
 				DEVELOPMENT_TEAM = 876GZYDWFS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherAppSwiftUi/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Acces;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
