@@ -26,11 +26,8 @@ struct MainView: View {
                     
                    if viewModel.coordinateWeatherOrMapTappint {
                        guard let loc = location.locationManager.location else { return }
-                       viewModel.getWeatherData(location: location.locationManager(location.locationManager, didUpdateLocations: [loc]))
-                       
-                       
-                       
-                       
+                       viewModel.getWeatherData(
+                        location: location.locationManager(location.locationManager, didUpdateLocations: [loc]))
                     } else {
                         viewModel.getWeatherData(location: viewModel.mapDefaultCoordinate)
                     }

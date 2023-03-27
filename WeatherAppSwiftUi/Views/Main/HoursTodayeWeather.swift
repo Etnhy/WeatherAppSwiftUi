@@ -42,8 +42,6 @@ struct HourCell: View {
     @State var image: String
     @State var temp: Double
     
-//    var hourly: Hourly
-    
     var body: some View {
         VStack(alignment: .center) {
             Spacer()

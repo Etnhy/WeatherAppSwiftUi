@@ -13,7 +13,8 @@ class WeatherViewModel: ObservableObject {
     @Published var currentWeather: CurrentWeather?
     @Published var coordinateWeatherOrMapTappint: Bool = true
     
-    @Published var mapDefaultCoordinate = CLLocationCoordinate2D(latitude: 50.450001, longitude: 30.523333)
+    @Published var mapDefaultCoordinate = CLLocationCoordinate2D(
+        latitude: 50.450001, longitude: 30.523333)
 
     
     public func getWeatherData(location: CLLocationCoordinate2D?) {
@@ -28,9 +29,7 @@ class WeatherViewModel: ObservableObject {
             getWeatherData(location: location)
         } else {
             getWeatherData(location: location)
-
         }
-//        print(coordinateWeatherOrMapTappint)
     }
     
     func returnWindSpeedCurrent()-> String {

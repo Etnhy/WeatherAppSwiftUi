@@ -38,12 +38,6 @@ struct TodayWeatherView: View {
                             .resizable()
                             .frame(width: 30,height: 30)
                     }
-//                    .onAppear {
-//                        guard let loc = location.locationManager.location else { return }
-//                        viewModel.getWeatherData(location: location.locationManager(location.locationManager, didUpdateLocations: [loc]))
-//
-//                    }
-
                 }
 
             }.padding(.horizontal,16)
